@@ -16,5 +16,14 @@ namespace PizzaUser.PizzaServices
                 Console.WriteLine(pizza);
             });
         }
+        public static Products UpProductById(int Id)
+        {
+            var delegat = PizzaDatabase.products.FindAll(p => p.Id == Id);
+            foreach (var item in delegat)
+            {
+                return item;
+            }
+            return null;
+        }
     }
 }
