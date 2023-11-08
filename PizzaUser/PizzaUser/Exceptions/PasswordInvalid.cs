@@ -1,6 +1,6 @@
 ﻿namespace PizzaUser.Exceptions
 {
-    internal class PasswordInvalid : Exception
+    internal class PasswordInvalid : System.Exception
     {
         public PasswordInvalid()
         {

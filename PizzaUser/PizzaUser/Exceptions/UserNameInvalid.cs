@@ -1,6 +1,6 @@
 ﻿namespace PizzaUser.Exceptions
 {
-    internal class UserNameInvalid : Exception
+    internal class UserNameInvalid : System.Exception
     {
         public UserNameInvalid()
         {
