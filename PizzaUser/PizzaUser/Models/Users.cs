@@ -18,6 +18,10 @@ namespace PizzaUser.Models
             set 
             {
                 if (value.Length < 3 || value.Length > 16) throw new UserNameInvalid("Name length must be greater than 3 and less than 16!!!");
+                else
+                {
+                    _name = value;
+                }
             } 
         }
         public string Surname { get; set; }
@@ -26,6 +30,10 @@ namespace PizzaUser.Models
             set
             {
                 if (value.Length < 6 || value.Length > 16) throw new UserNameInvalid("Password length must be greater than 6 and less than 16!!!");
+                else
+                {
+                    _password = value;
+                }
             }
         }
 

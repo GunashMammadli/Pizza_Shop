@@ -94,7 +94,7 @@ namespace PizzaUser
                                         {
                                             Console.Write("Enter number of pizza: ");
                                             int count = Convert.ToInt32(Console.ReadLine());
-                                            float totalPrice = selectedPizza.Price * selectedPizza.Count;
+                                            int totalPrice = selectedPizza.Price * count;
                                             Console.WriteLine($"Total Price => {totalPrice}");
                                             Console.WriteLine("S - Add to basket \nG - Back");
                                             char choose4 = Convert.ToChar(Console.ReadLine());
@@ -102,15 +102,18 @@ namespace PizzaUser
                                             {
                                                 case 'S':
                                                     Console.WriteLine("Added to basket!");
-                                                    Console.WriteLine("Do you want to order? (Y - yes, N - no");
+                                                    Console.WriteLine("Do you want to order? (Y - yes, N - no)");
                                                     char choose5 = Convert.ToChar(Console.ReadLine());
                                                     if (choose5 == 'Y')
                                                     {
-                                                        Console.WriteLine("Your order has been received!");
+                                                        
                                                         Console.WriteLine("Enter address: ");
                                                         string address = Console.ReadLine();
                                                         Console.WriteLine("Enter phone number: ");
                                                         string phoneNumber = Console.ReadLine();
+
+                                                        Console.WriteLine("Your order has been received!");
+
                                                     }
                                                     else if (choose5 == 'N')
                                                     {
@@ -189,8 +192,7 @@ namespace PizzaUser
 
                             else
                             {
-                                Console.WriteLine("Bele user yoxdu");
-                                throw new UserNameInvalid("User tapilmadi!!!");
+                                Console.WriteLine("Bele user yoxdu!!!");
                             }
                         }
                         break;
