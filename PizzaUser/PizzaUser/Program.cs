@@ -7,11 +7,13 @@ using Colorful;
 using Console = Colorful.Console;
 using System.Drawing;
 using PizzaUser.Exceptions;
+using System.Diagnostics.Metrics;
 
 namespace PizzaUser
 {
     public class Program
     {
+
         static void Main(string[] args)
         {
             string logo = @"  __  __                                                 _         ____  _                  
@@ -33,7 +35,7 @@ namespace PizzaUser
             {
 
             Bc:
-                Console.WriteLine("\nChoose from below option: \n1. Sign up. \n2. Login. \n3. Exit   asdafaf ", Color.Yellow);
+                Console.WriteLine("\nChoose from below option: \n1. Sign up. \n2. Login. \n3. Exit", Color.Yellow);
                 int choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {
@@ -81,6 +83,49 @@ namespace PizzaUser
                                 {
                                     case 1:
                                         PizzaServices.PizzaServices.GetAllPizza();
+                                        break;
+                                    case 2:
+                                        Console.Write("Enter ID of the pizza you want to order: ");
+                                        int productId = Convert.ToInt32(Console.ReadLine());
+
+                                        Products selectedPizza = PizzaDatabase.products.Find(product => product.Id == productId);
+
+                                        if (selectedPizza != null)
+                                        {
+                                            Console.Write("Enter number of pizza: ");
+                                            int count = Convert.ToInt32(Console.ReadLine());
+                                            float totalPrice = selectedPizza.Price * selectedPizza.Count;
+                                            Console.WriteLine($"Total Price => {totalPrice}");
+                                            Console.WriteLine("S - Add to basket \nG - Back");
+                                            char choose4 = Convert.ToChar(Console.ReadLine());
+                                            switch(choose4)
+                                            {
+                                                case 'S':
+                                                    Console.WriteLine("Added to basket!");
+                                                    Console.WriteLine("Do you want to order? (Y - yes, N - no");
+                                                    char choose5 = Convert.ToChar(Console.ReadLine());
+                                                    if (choose5 == 'Y')
+                                                    {
+                                                        Console.WriteLine("Your order has been received!");
+                                                        Console.WriteLine("Enter address: ");
+                                                        string address = Console.ReadLine();
+                                                        Console.WriteLine("Enter phone number: ");
+                                                        string phoneNumber = Console.ReadLine();
+                                                    }
+                                                    else if (choose5 == 'N')
+                                                    {
+                                                        PizzaServices.PizzaServices.GetAllPizza();
+                                                    }
+                                                    break;
+                                                case 'G':
+                                                    PizzaServices.PizzaServices.GetAllPizza();
+                                                    break;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Wrong ID!");
+                                        }
                                         break;
                                     case 3:
                                         goto Bc;
