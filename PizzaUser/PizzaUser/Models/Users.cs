@@ -39,7 +39,7 @@ namespace PizzaUser.Models
 
         public override string ToString()
         {
-            return $"{Id}. {Name} {Surname}";
+            return $"{Id}. {Name} {Surname} Pass: {Password}";
         }
     }
 }

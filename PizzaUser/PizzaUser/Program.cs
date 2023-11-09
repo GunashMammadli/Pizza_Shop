@@ -68,6 +68,61 @@ namespace PizzaUser
                         Console.WriteLine("Sifre daxil edin: ");
                         string password = Console.ReadLine();
 
+                        if (name == "admin" && password == "admin")
+                        {
+                        AdminChoose:
+                            Console.WriteLine("\nChoose from below option: \n1. Pizzas. \n2. Users. \n3. Logout Admin", Color.Red);
+                            int chooseadmin = Convert.ToInt32(Console.ReadLine());
+                            switch (chooseadmin)
+                            {
+                                case 1:
+                                Pizzas:
+                                    Console.WriteLine("\nChoose from below option: \n1. All pizza. \n2. Add pizza. \n3. Edit pizza by ID. \n4. Back");
+                                    int choose3 = Convert.ToInt32(Console.ReadLine());
+                                    switch (choose3)
+                                    {
+                                        case 1:
+
+                                            PizzaServices.PizzaServices.GetAllPizza();
+
+                                            break;
+                                        case 2:
+
+                                            Products pizza = new Products();
+
+                                            Console.WriteLine("Pizza Name: ");
+                                            pizza.PizzaName = Console.ReadLine();
+                                            Console.WriteLine("Pizza Price: ");
+                                            pizza.Price = Convert.ToInt32(Console.ReadLine());
+
+                                            PizzaServices.PizzaServices.AddPizza(pizza);
+
+                                            break;
+                                        case 3:
+                                            Console.WriteLine("Edit id input: ");
+                                            int editinp = Convert.ToInt32(Console.ReadLine());
+
+                                            Products updatedProduct = PizzaServices.PizzaServices.UpProductById(editinp);
+                                            Console.WriteLine("Name: ");
+                                            updatedProduct.PizzaName = Console.ReadLine();
+                                            Console.WriteLine("Price: ");
+                                            updatedProduct.Price = Convert.ToInt32(Console.ReadLine());
+
+                                            Console.WriteLine("Update successfull!!!");
+                                            break;
+                                        case 4:
+                                            goto AdminChoose;
+                                    }
+                                    goto Pizzas;
+                                case 2:
+                                    UserServices.AllUsers();
+                                    break;
+                                case 3:
+                                    goto Login;
+                            }
+                            goto AdminChoose;
+                        }
+
                         foreach (var item in PizzaDatabase.users)
                         {
                             if (name == item.Name && password == item.Password)
@@ -138,60 +193,6 @@ namespace PizzaUser
                                         goto Login;
                                 }
                                 goto Userchoose;
-                            }
-
-                            else if (name == "admin" && password == "admin")
-                            {
-                            AdminChoose:
-                                Console.WriteLine("\nChoose from below option: \n1. Pizzas. \n2. Users. \n3. Logout Admin", Color.Red);
-                                int chooseadmin = Convert.ToInt32(Console.ReadLine());
-                                switch (chooseadmin)
-                                {
-                                    case 1:
-                                    Pizzas:
-                                        Console.WriteLine("\nChoose from below option: \n1. All pizza. \n2. Add pizza. \n3. Edit pizza by ID. \n4. Back");
-                                        int choose3 = Convert.ToInt32(Console.ReadLine());
-                                        switch (choose3) {
-                                            case 1:
-
-                                                PizzaServices.PizzaServices.GetAllPizza();
-
-                                                break;
-                                            case 2:
-
-                                                Products pizza = new Products();
-
-                                                Console.WriteLine("Pizza Name: ");
-                                                pizza.PizzaName = Console.ReadLine();
-                                                Console.WriteLine("Pizza Price: ");
-                                                pizza.Price = Convert.ToInt32(Console.ReadLine());
-
-                                                PizzaServices.PizzaServices.AddPizza(pizza);
-
-                                                break;
-                                            case 3:
-                                                Console.WriteLine("Edit id input: ");
-                                                int editinp = Convert.ToInt32(Console.ReadLine());
-
-                                                Products updatedProduct = PizzaServices.PizzaServices.UpProductById(editinp);
-                                                Console.WriteLine("Name: ");
-                                                updatedProduct.PizzaName = Console.ReadLine();
-                                                Console.WriteLine("Price: ");
-                                                updatedProduct.Price = Convert.ToInt32(Console.ReadLine());
-
-                                                Console.WriteLine("Update successfull!!!");
-                                                break;
-                                            case 4:
-                                                goto AdminChoose;
-                                        }
-                                        goto Pizzas;
-                                    case 2:
-                                        UserServices.AllUsers();
-                                        break;
-                                    case 3:
-                                        goto Login;
-                                }
-                                goto AdminChoose;
                             }
 
                             else
