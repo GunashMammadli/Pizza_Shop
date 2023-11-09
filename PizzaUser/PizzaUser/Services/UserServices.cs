@@ -16,5 +16,16 @@ namespace PizzaUser.Services
                 Console.WriteLine(users);
             });
         }
+        public static Users GetUserbyID(int id)
+        {
+            return PizzaDatabase.users.SingleOrDefault(e => e.Id == id);
+
+        }
+
+        public static void changeUserRole(int id)
+        {
+
+            Console.WriteLine("Changed successfully");
+        }
     }
 }

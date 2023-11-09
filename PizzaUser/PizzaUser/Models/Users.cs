@@ -36,7 +36,7 @@ namespace PizzaUser.Models
                 }
             }
         }
-
+        public bool isAdmin { get; set; }
         public override string ToString()
         {
             return $"{Id}. {Name} {Surname} Pass: {Password}";
