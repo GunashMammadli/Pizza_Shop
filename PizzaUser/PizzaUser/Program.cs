@@ -61,9 +61,9 @@ namespace PizzaUser
 
                         break;
                     case 2:
-                        Console.Write("Adi daxil edin: ");
+                        Console.Write("Enter Name: ");
                         string name = Console.ReadLine();
-                        Console.Write("Sifre daxil edin: ");
+                        Console.Write("Enter Password: ");
                         string password = Console.ReadLine();
 
                         if (name == "admin" && password == "admin")
@@ -148,12 +148,14 @@ namespace PizzaUser
                                                 int count = Convert.ToInt32(Console.ReadLine());
                                                 int totalPrice = selectedPizza.Price * count;
                                                 Console.WriteLine($"Total Price => {totalPrice}");
-                                                Console.WriteLine("S - Add to basket \nG - Back");
+                                                Console.WriteLine("S - Add to basket\nG - Back");
                                                 char choose4 = Convert.ToChar(Console.ReadLine());
                                                 switch (choose4)
                                                 {
                                                     case 'S':
-                                                        Console.WriteLine("Added to basket!");
+                                                        BasketServices.AddToBasket(selectedPizza);
+                                                        Console.WriteLine("Products in the basket: ");
+                                                        Console.WriteLine($"{selectedPizza.PizzaName} => {count} - {totalPrice}$");
                                                         Console.WriteLine("Do you want to order? (Y - yes, N - no)");
                                                         char choose5 = Convert.ToChar(Console.ReadLine());
                                                         if (choose5 == 'Y')
@@ -169,7 +171,7 @@ namespace PizzaUser
                                                         }
                                                         else if (choose5 == 'N')
                                                         {
-                                                            PizzaServices.PizzaServices.GetAllPizza();
+                                                            goto Userchoose;
                                                         }
                                                         break;
                                                     case 'G':
