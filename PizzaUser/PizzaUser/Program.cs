@@ -68,7 +68,7 @@ namespace PizzaUser
                         Console.WriteLine("Sifre daxil edin: ");
                         string password = Console.ReadLine();
 
-                        if (name == "admin" && password == "admin")
+                        if (name == "admin" && password == "admin" )
                         {
                         AdminChoose:
                             Console.WriteLine("\nChoose from below option: \n1. Pizzas. \n2. Users. \n3. Logout Admin", Color.Red);
@@ -115,7 +115,29 @@ namespace PizzaUser
                                     }
                                     goto Pizzas;
                                 case 2:
-                                    UserServices.AllUsers();
+                                    int choose4 = Convert.ToInt32(Console.ReadLine());
+                                    Console.WriteLine("\nChoose from below option: \n1. All users. \n2. Add users. \n3. Edit user by ID. \n4. Remove by ID");
+                                    switch (choose4)
+                                    {
+                                        case 1:
+                                            UserServices.AllUsers();
+                                            break;
+                                        case 2:
+                                            Users user = new Users();
+                                            
+                                            Console.Write("User Name: ");
+                                            user.Name = Console.ReadLine();
+                                            Console.Write("User Surname: ");
+                                            user.Surname = Console.ReadLine();
+                                            Console.Write("User Password: ");
+                                            user.Password = Console.ReadLine();
+
+                                            break;
+                                        case 3:
+                                            Console.Write("Input User Id");
+                                            int ID = Convert.ToInt32(Console.ReadLine());
+                                            break;
+                                    }
                                     break;
                                 case 3:
                                     goto Login;
