@@ -1,8 +1,6 @@
 ﻿using PizzaUser.Database;
-using PizzaUser.Exception;
 using PizzaUser.Exceptions;
 using PizzaUser.Models;
-using PizzaUser.PizzaServices;
 using PizzaUser.Services;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -180,7 +178,7 @@ namespace PizzaUser
                                         {
                                             Console.WriteLine("This product is already in basket.");
                                         }
-
+                                        Basket:
                                         Console.WriteLine("Basket List: ");
                                         PizzaServices.PizzaServices.AllBasket();
                                         Console.WriteLine("1. Complete order.\n2. Continue ordering. ");
@@ -194,13 +192,14 @@ namespace PizzaUser
                                                 try
                                                 {
                                                     string phoneNumber = Console.ReadLine();
-                                                    if (!Regex.IsMatch(phoneNumber, @"^\+994-(50)|(51)|(55)|(10)|(70)|(77)-[0-9]{3}-[0-9]{4}")) throw new            PhoneNumberInvalid("Wrong Phone Number. Ex:+994-00-000-0000"); 
+                                                    if (!Regex.IsMatch(phoneNumber, @"^\+994(50)|(51)|(55)|(10)|(70)|(77)-[0-9]{3}-[0-9]{2}-[0-9]{2}")) throw new PhoneNumberInvalid("Wrong Phone Number. Ex:+99400-000-00-00"); 
                                                     Console.WriteLine($"Address: {address}, PhoneNum: {phoneNumber}");
-                                                    Console.WriteLine("Your order has been received!");
+                                                    Console.WriteLine("\nYour order has been received!");
                                                 }
                                                 catch (PhoneNumberInvalid ex)
                                                 {
                                                     Console.WriteLine(ex.Message);
+                                                    goto Basket;
                                                 }
                                                 PizzaDatabase.basket.Clear();
                                                 break;
