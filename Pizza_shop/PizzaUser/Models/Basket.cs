@@ -12,7 +12,7 @@ internal class Basket
         Id = _id;
     }
     public string PizzaName { get; set; }
-    public decimal TotalPrice { get; set; }
+    public int TotalPrice { get; set; }
     public int Count { get; set; }
     public override string ToString()
     {
