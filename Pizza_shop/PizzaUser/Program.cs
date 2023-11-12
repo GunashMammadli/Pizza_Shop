@@ -26,7 +26,7 @@ namespace PizzaUser
                 Console.SetCursorPosition(i, 5);
                 Console.WriteLine(bar[i], Color.Red);
                 Console.WriteLine();
-                Thread.Sleep(10);
+                Thread.Sleep(90);
             }
             //SPECIAL PIZZAS//
             Products mamma_miaSpecial = new Products()
@@ -429,7 +429,6 @@ namespace PizzaUser
                                     {
                                         Console.WriteLine("\n User not found.!");
                                     }
-                                    
                                 }
                             }
                             break;
